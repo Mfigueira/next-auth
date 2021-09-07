@@ -1,31 +1,31 @@
 import { useState } from 'react';
-import classes from './auth-form.module.css';
+import classes from './AuthForm.module.css';
 
-function AuthForm() {
+const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
 
-  function switchAuthModeHandler() {
+  const switchAuthMode = () => {
     setIsLogin((prevState) => !prevState);
-  }
+  };
 
   return (
     <section className={classes.auth}>
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
       <form>
         <div className={classes.control}>
-          <label htmlFor='email'>Your Email</label>
-          <input type='email' id='email' required />
+          <label htmlFor="email">Your Email</label>
+          <input type="email" id="email" required />
         </div>
         <div className={classes.control}>
-          <label htmlFor='password'>Your Password</label>
-          <input type='password' id='password' required />
+          <label htmlFor="password">Your Password</label>
+          <input type="password" id="password" required />
         </div>
         <div className={classes.actions}>
           <button>{isLogin ? 'Login' : 'Create Account'}</button>
           <button
-            type='button'
+            type="button"
             className={classes.toggle}
-            onClick={switchAuthModeHandler}
+            onClick={switchAuthMode}
           >
             {isLogin ? 'Create new account' : 'Login with existing account'}
           </button>
@@ -33,6 +33,6 @@ function AuthForm() {
       </form>
     </section>
   );
-}
+};
 
 export default AuthForm;

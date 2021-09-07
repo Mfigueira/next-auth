@@ -1,11 +1,10 @@
 import Link from 'next/link';
+import classes from './MainNavigation.module.css';
 
-import classes from './main-navigation.module.css';
-
-function MainNavigation() {
+const MainNavigation = () => {
   return (
     <header className={classes.header}>
-      <Link href='/'>
+      <Link href="/">
         <a>
           <div className={classes.logo}>Next Auth</div>
         </a>
@@ -13,10 +12,10 @@ function MainNavigation() {
       <nav>
         <ul>
           <li>
-            <Link href='/auth'>Login</Link>
+            <Link href="/auth">Login</Link>
           </li>
           <li>
-            <Link href='/profile'>Profile</Link>
+            <Link href="/profile">Profile</Link>
           </li>
           <li>
             <button>Logout</button>
@@ -25,6 +24,6 @@ function MainNavigation() {
       </nav>
     </header>
   );
-}
+};
 
 export default MainNavigation;
