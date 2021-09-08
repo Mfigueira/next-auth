@@ -4,6 +4,6 @@ This is a Demo Next.js App with next-auth.
 
 Based on the lectures from Academind's Next.js course and enhanced with personal touches.
 
-<!-- ## Deployment?
+## Deployment?
 
-[Here on Vercel](https://next-events-mf.vercel.app/)! -->
+[Here on Vercel](https://next-auth-mf.vercel.app/)!
