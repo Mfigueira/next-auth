@@ -1,6 +1,9 @@
-import { hash } from 'bcryptjs';
+import { hash, compare } from 'bcryptjs';
 
 export const hashPassword = async (password) => await hash(password, 12);
+
+export const arePasswordsEqual = async (password, hashedPassword) =>
+  await compare(password, hashedPassword);
 
 export const createUser = async (email, password) => {
   const response = await fetch('api/auth/signup', {
