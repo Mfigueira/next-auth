@@ -1,24 +1,52 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { createUser, isUserValid } from '../../helpers/auth';
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
 
   const switchAuthMode = () => {
     setIsLogin((prevState) => !prevState);
   };
 
+  const handleSubmitUser = async (event) => {
+    event.preventDefault();
+
+    const email = emailInputRef.current.value;
+    const password = passwordInputRef.current.value;
+
+    // if (!isUserValid(email, password)) return;
+
+    if (isLogin) {
+      // log user in
+    } else {
+      try {
+        const result = await createUser(email, password);
+        console.log(result);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
   return (
     <section className={classes.auth}>
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
-      <form>
+      <form onSubmit={handleSubmitUser}>
         <div className={classes.control}>
           <label htmlFor="email">Your Email</label>
-          <input type="email" id="email" required />
+          <input ref={emailInputRef} type="email" id="email" required />
         </div>
         <div className={classes.control}>
           <label htmlFor="password">Your Password</label>
-          <input type="password" id="password" required />
+          <input
+            ref={passwordInputRef}
+            type="password"
+            id="password"
+            required
+          />
         </div>
         <div className={classes.actions}>
           <button>{isLogin ? 'Login' : 'Create Account'}</button>
